@@ -1,0 +1,68 @@
+<?php
+
+class CommonCall {
+
+	private $serverUrl;	// 호출Url
+	private $actionUrl;	// 실작업Url
+	
+	/**
+	 * 생성자
+	 */
+	public function __construct(){
+		$this->serverUrl = "서버주소";
+	}
+	
+	/**
+	 * 공통서비스 Call을 하는 부분
+	 * @param $mode
+	 * @param $postData
+	 * @param $functionName
+	 * @return
+	 */
+    public function call($mode , $postData = null, $functionName = "") {
+    	    $this->selectMode($mode);
+            $postData = json_encode($postData);
+            
+            $headers = array(
+            	"Content-Type: application/json;"
+            	, "Content-Length: ".strlen($postData).""
+            	,
+            );
+            
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $this->serverUrl . $this->actionUrl);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            
+            $result = json_decode(urldecode($response));
+            
+            return $result;
+    }
+
+    private function selectMode($mode){
+    	
+    	switch ($mode) {
+    		case "save":
+    			$this->actionUrl = "/save.php";
+    			break;
+    		case "use":
+    			$this->actionUrl = "/use.php";
+    			break;
+    		case "create":
+    			$this->actionUrl = "/create.php";
+    			break;
+    		case "show":
+    			$this->actionUrl = "/show.php";
+    			break;
+    		default:    			
+    			break;
+    	}
+    }
+}
+출처: https://yoshikixdrum.tistory.com/188 [평범한 이야기들:티스토리]
