@@ -1,49 +1,19 @@
-const express = require("express");
-const User = require("../models/user");
-const Comment = require("../models/comment");
+var express = require("express");
+var router = express.Router();
 
-const router = express.Router();
+/* GET users listing. */
+router.get("/", function (req, res, next) {
+  res.send("respond with a resource");
+});
 
-router
-  .route("/")
-  .get(async (req, res, next) => {
-    try {
-      const users = await User.findAll();
-      res.json(users);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  })
-  .post(async (req, res, next) => {
-    try {
-      const user = await User.create({
-        name: req.body.name,
-        age: req.body.age,
-        married: req.body.married,
-      });
-      console.log(user);
-      res.status(201).json(user);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  });
+router.get("/flash", function (req, res) {
+  req.session.message = "세션 메시지";
+  req.flash("message", "flash 메시지");
+  res.redirect("/users/flash/result");
+});
 
-router.get("/:id/comments", async (req, res, next) => {
-  try {
-    const comments = await Comment.findAll({
-      include: {
-        model: User,
-        where: { id: req.params.id },
-      },
-    });
-    console.log(comments);
-    res.json(comments);
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
+router.get("/flash/result", function (req, res) {
+  res.send(`${req.session.message} ${req.flash("message")}`);
 });
 
 module.exports = router;
