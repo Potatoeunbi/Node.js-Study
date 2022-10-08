@@ -10,12 +10,14 @@ var flash = require("connect-flash");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var sequelize = require("./models").sequelize;
 
 var app = express();
+sequelize.sync();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set("view engine", "pug");
 
 app.use(function (req, res, next) {
   console.log(req.url, "저도 미들웨어입니다.");
