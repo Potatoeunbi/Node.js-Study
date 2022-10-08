@@ -3,17 +3,15 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 
-//콘솔에 나오는 GET / 200 51.267 ms 같은 로근느 모두 morgan 미들웨어에서 나온다.
+//콘솔에 나오는 GET / 200 51.267 ms 같은 로그는 모두 morgan 미들웨어에서 나온다.
 var logger = require("morgan");
 var session = require("express-session");
 var flash = require("connect-flash");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var sequelize = require("./models").sequelize;
 
 var app = express();
-sequelize.sync();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -25,6 +23,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(logger("dev"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("secret code"));
@@ -45,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/comments", commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
