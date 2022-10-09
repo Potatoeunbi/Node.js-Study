@@ -18,4 +18,5 @@
 * 카카오톡으로 로그인 시, 이전에 Eunbi-Lee로 글을 썼던 글들이 보이면서 팔로우를 할 수 있게 버튼이 나옴.  
 ![image](https://user-images.githubusercontent.com/93712785/194781670-bf0d2845-2245-423e-a40b-58f58f20b14e.png)
 
-
+* 팔로우 시, 팔로우 버튼은 없어지고 팔로잉 수가 증가함.
+![image](https://user-images.githubusercontent.com/93712785/194781774-25181ed4-8ae6-48bf-bef9-4a9c2c7d86b0.png)
