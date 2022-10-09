@@ -6,8 +6,9 @@
 
 ## 9단원 실습 내용
 
-* 로컬로 로그인 시  
+* 로컬로 회원가입 시  
 ![image](https://user-images.githubusercontent.com/93712785/194766750-2bca358c-bdf1-49a8-8be5-e043a9df3fc5.png)
+* 로컬로 로그인 시  
 ![image](https://user-images.githubusercontent.com/93712785/194781488-7540f8e0-cec2-4e51-a86b-4885234ec4ac.png)
 ![image](https://user-images.githubusercontent.com/93712785/194781514-b0c56283-acc8-4d59-9c75-d64a73f47559.png)
 ![image](https://user-images.githubusercontent.com/93712785/194781574-14d7aa94-67f2-47b8-b781-7e65f1a91ad3.png)
