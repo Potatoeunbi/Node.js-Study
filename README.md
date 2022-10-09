@@ -15,7 +15,7 @@
 * 해시 태그 검색 창에 그림자라고 검색 시, 강아지 사진은 안 나오고 해시태그 설정한 글만 나옴.
 ![image](https://user-images.githubusercontent.com/93712785/194781589-210e0680-c766-44fd-a3bb-5906b9796233.png)
 
-* 카카오톡으로 로그인 시  
+* 카카오톡으로 로그인 시, 이전에 Eunbi-Lee로 글을 썼던 글들이 보이면서 팔로우를 할 수 있게 버튼이 나옴.  
 ![image](https://user-images.githubusercontent.com/93712785/194781670-bf0d2845-2245-423e-a40b-58f58f20b14e.png)
 
 
